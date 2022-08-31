@@ -1,3 +1,7 @@
 :root{
     --font: font-family: "Chivo", sans-serif;
 }
+
+#parks {
+    height: 300px;
+}
