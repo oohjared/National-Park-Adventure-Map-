@@ -12,18 +12,27 @@
     <title>National Park Adventure Guide</title>
   </head>
   <body>
-    <header>
+    <header class=" d-flex justify-content-center">
       <h1>National Park Adventure Guide</h1>
     </header>
+    <div class="margin"></div>
     <main>
       <section class="row d-flex flex-column justify-content-center align-items-center">
-        <article class="d-flex flex-row">Starting Address</article>
-          <input class="w-25" type="text" />
-        <article class="d-flex flex-column p-4">National Parks</article>
-          <div id="parks" class="overflow-auto w-50 d-flex flex-column">
+        <article class="d-flex flex-row p-4">
+          <h4>Starting Address:</h4>
+          <textarea class="form-control"></textarea>
+        </article>
+        <article id="parks-el" class="d-flex flex-column p-2 col-6">
+          <h3 id="parks-el-title" class="d-flex justify-content-center text-white rounded-pill">National Parks</h3>
+          <div id="parks" class="overflow-auto d-flex flex-column p-2">
             
           </div>
-        <aside class="float-right">State</aside>
+        </article>
+        <article>
+          <select id="states" class="form-control">
+            <option>State</option>
+          </select>
+        </article>
         <button>Map My Adventure</button>
       </section>
       <section>
