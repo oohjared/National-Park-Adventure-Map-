@@ -31,16 +31,16 @@ function searchNPS () {
 
 
 function displayCard (park) {
-        var parkLi = $('<li>').addClass('list-inline-item p-1')
-        var parkImgDiv = $('<div>').addClass('position-relative park-div rounded')
-        var parkImg = $('<img>').addClass('park-image rounded')
-        var parkTitle = $('<h6>').addClass('park-title text-center text-white text-wrap overflow-auto p-1')
-        parkTitle.text(park.fullName)
-        parkImg.attr('src', park.images[0].url).attr('alt', park.images[0].altText)
+    var parkLi = $('<li>').addClass('list-inline-item p-1')
+    var parkImgDiv = $('<div>').addClass('position-relative park-div rounded')
+    var parkImg = $('<img>').addClass('park-image rounded')
+    var parkTitle = $('<h6>').addClass('park-title text-center text-white text-wrap overflow-auto p-1')
+    parkTitle.text(park.fullName)
+    parkImg.attr('src', park.images[0].url).attr('alt', park.images[0].altText)
 
-        parksList.append(parkLi)
-        parkLi.append(parkImgDiv)
-        parkImgDiv.append(parkImg, parkTitle)
-    }
+    parksList.append(parkLi)
+    parkLi.append(parkImgDiv)
+    parkImgDiv.append(parkImg, parkTitle)
+}
 
 statesEl.on('click', searchNPS);
