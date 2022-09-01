@@ -1,3 +1,38 @@
-:root{
-    --font: font-family: "Chivo", sans-serif;
+:root {
+  --font: "Chivo", sans-serif;
+  --orange: rgb(209, 101, 0);
+  --green: rgb(0, 88, 0);
 }
+
+header {
+  font-family: var(--font);
+  font-weight: 400;
+  background-color: var(--orange);
+  padding: 20px;
+  color: var(--green);
+}
+.margin {
+  padding: 15px;
+  background-color: var(--green);
+}
+
+#parks {
+  height: 300px;
+}
+
+#parks-el {
+    background-color: var(--green);
+}
+
+#parks-el-title {
+    border: solid var(--orange);
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* #states {
+    position: absolute;
+    right: 211px;
+    top: 245px;
+    width: 85px;
+} */
