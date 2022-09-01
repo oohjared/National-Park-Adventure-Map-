@@ -55,6 +55,10 @@ section{
   opacity: 0;
 }
 
+.park-div {
+    box-shadow: 5px 5px 5px rgb(0, 49, 0);
+}
+
 .park-div:hover .park-title {
     opacity: 100%;
     transition: ease-in-out 0.5s;
