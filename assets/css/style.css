@@ -35,6 +35,15 @@ header {
   resize: none;
 }
 
+.park-image {
+  height: 150px;
+  width: 150px;
+}
+
+.park-title {
+  width: 150px;
+}
+
 #parks {
   height: 300px;
 }
@@ -48,10 +57,3 @@ header {
   width: 300px;
   margin: 0 auto;
 }
-
-/* #states {
-    position: absolute;
-    right: 211px;
-    top: 245px;
-    width: 85px;
-} */

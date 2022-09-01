@@ -13,12 +13,14 @@ for (var i = 0; i < states.length; i++) {
 }
 
 function searchNPS () {
-        fetch(npsAPI + "&stateCode=CO")
+        fetch(npsAPI + "&stateCode=" + statesEl.value)
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function (data){
                     data.data.forEach(function (park) {
+                        console.log(park)
                         displayCard(park);
+                        
                     })
                 })
             }
@@ -26,10 +28,10 @@ function searchNPS () {
 }
 
 
-function displayCard () {
-        var parkLi = $('<li>')
-        var parkImg = $('<img>')
-        var parkTitle = $('<h5>')
+function displayCard (park) {
+        var parkLi = $('<li>').addClass('list-inline-item p-2')
+        var parkImg = $('<img>').addClass('park-image')
+        var parkTitle = $('<h6>').addClass('park-title text-center text-white text-wrap')
         parkTitle.text(park.fullName)
         parkImg.attr('src', park.images[0].url).attr('alt', park.images[0].altText)
 
@@ -37,4 +39,4 @@ function displayCard () {
         parkLi.append(parkImg, parkTitle)
     }
 
-searchNPS();
+statesEl.on('click', searchNPS);
