@@ -12,9 +12,11 @@ header {
   padding: 20px;
   color: var(--green);
 }
+
 section{
     background-color: var(--grey);
 }
+
 .margin {
   padding: 15px;
   background-color: var(--green);
@@ -36,9 +38,32 @@ section{
   font-size: 16px;
   resize: none;
 }
+
+.park-image {
+  height: 150px;
+  width: 150px;
+}
+
+.park-title {
+  width: 150px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.301);
+  opacity: 0;
+}
+
+.park-div:hover .park-title {
+    opacity: 100%;
+    transition: ease-in-out 0.5s;
+}
+
 .textinput:hover{
     border-color: var(--green);
 }
+
 .map{
     border: 3px solid var(--orange);
     border-radius: 5px;
@@ -49,13 +74,15 @@ section{
 .map:hover{
     border-color: var(--green);
 }
+
 .selected{
     height: 500px;
     display: flex;
     flex-direction: column;
 }
+
 #parks {
-  height: 300px;
+  height: 400px;
 }
 
 #parks-el {
@@ -68,9 +95,3 @@ section{
   margin: 0 auto;
 }
 
-/* #states {
-    position: absolute;
-    right: 211px;
-    top: 245px;
-    width: 85px;
-} */
