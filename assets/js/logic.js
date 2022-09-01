@@ -1,4 +1,5 @@
 var statesEl = $('#states')
+var statesOption = $('option')
 var parksList = $('#parks')
 var states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE",
 "NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
@@ -13,10 +14,11 @@ for (var i = 0; i < states.length; i++) {
 }
 
 function searchNPS () {
-        fetch(npsAPI + "&stateCode=" + statesEl.value)
+        fetch(npsAPI + "&stateCode=" + statesEl.val())
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function (data){
+                    parksList.empty();
                     data.data.forEach(function (park) {
                         console.log(park)
                         displayCard(park);
@@ -29,14 +31,16 @@ function searchNPS () {
 
 
 function displayCard (park) {
-        var parkLi = $('<li>').addClass('list-inline-item p-2')
+        var parkLi = $('<li>').addClass('list-inline-item p-1')
+        var parkImgDiv = $('<div>').addClass('position-relative park-div')
         var parkImg = $('<img>').addClass('park-image')
-        var parkTitle = $('<h6>').addClass('park-title text-center text-white text-wrap')
+        var parkTitle = $('<h6>').addClass('park-title text-center text-white text-wrap overflow-auto p-1')
         parkTitle.text(park.fullName)
         parkImg.attr('src', park.images[0].url).attr('alt', park.images[0].altText)
 
         parksList.append(parkLi)
-        parkLi.append(parkImg, parkTitle)
+        parkLi.append(parkImgDiv)
+        parkImgDiv.append(parkImg, parkTitle)
     }
 
 statesEl.on('click', searchNPS);
