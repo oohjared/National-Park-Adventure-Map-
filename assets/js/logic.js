@@ -1,6 +1,7 @@
 var statesEl = $('#states')
 var statesOption = $('option')
 var parksList = $('#parks')
+var parksEl = $('#parks-el')
 var states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE",
 "NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
 var npsAPI = "https://developer.nps.gov/api/v1/parks?api_key=DfZ6BCJAVwqNxkRBiJWorSPvEKU307arUCacFidE&limit=467&start=0";
@@ -43,4 +44,9 @@ function displayCard (park) {
     parkImgDiv.append(parkImg, parkTitle)
 }
 
+// function addClass {
+
+// }
+
+// $('park-div').click(addPark)
 statesEl.on('click', searchNPS);
