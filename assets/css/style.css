@@ -12,7 +12,9 @@ header {
   padding: 20px;
   color: var(--green);
 }
-
+section{
+    background-color: var(--grey);
+}
 .margin {
   padding: 15px;
   background-color: var(--green);
@@ -42,6 +44,27 @@ header {
 
 .park-title {
   width: 150px;
+}
+
+.textinput:hover{
+    border-color: var(--green);
+}
+
+.map{
+    border: 3px solid var(--orange);
+    border-radius: 5px;
+    background-color: var(--grey);
+    height: 45px;
+    width: 180px;
+}
+.map:hover{
+    border-color: var(--green);
+}
+
+.selected{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
 #parks {
