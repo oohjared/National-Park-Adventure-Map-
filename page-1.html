@@ -17,16 +17,34 @@
     </header>
     <div class="margin"></div>
     <main>
-      <section>
-        <article>Address</article>
-        <input type="text" />
-        <article>National Parks</article>
-        <aside>State</aside>
+      <section class="row d-flex flex-row justify-content-center">
+        <article>
+          <h4 class="d-inine">Starting Address:</h4>
+        </article>
+        <article>
+          <textarea class="d-inine form-control w-100"></textarea>
+        </article>
+      </section>
+      <section class="row d-flex flex-row justify-content-center min-vw-100">
+        <article class="col-1"></article>
+        <article id="parks-el" class="d-flex flex-column m-3 p-2 col-5">
+          <h3 id="parks-el-title" class="d-flex justify-content-center text-white rounded-pill">National Parks</h3>
+          <div id="parks" class="overflow-auto d-flex flex-column p-2">
+            
+          </div>
+        </article>
+        <article class="col-1 m-3">
+          <select id="states" class="form-control">
+            <option>State</option>
+          </select>
+        </article>
+      </section>
+      <section class="d-flex justify-content-center">
         <button>Map My Adventure</button>
       </section>
       <section>
         <article>
-          <h2>Parks Selected</h2>
+          <h2 class="d-flex justify-content-center">Parks Selected</h2>
           <div>
 
           </div>
