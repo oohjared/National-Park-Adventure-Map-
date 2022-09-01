@@ -2,6 +2,7 @@
   --font: "Chivo", sans-serif;
   --orange: rgb(209, 101, 0);
   --green: rgb(0, 88, 0);
+  --grey: rgb(192, 192, 192);
 }
 
 header {
@@ -11,9 +12,27 @@ header {
   padding: 20px;
   color: var(--green);
 }
+
 .margin {
   padding: 15px;
   background-color: var(--green);
+}
+
+.addressbar {
+  /* background-color: var(--green); */
+  padding: 25px 0 20px 0;
+  background-color: var(--grey);
+}
+
+.textinput {
+  height: 35px;
+  width: 250px;
+  box-sizing: border-box;
+  border: 2px solid var(--orange);
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
 }
 
 #parks {
@@ -21,13 +40,13 @@ header {
 }
 
 #parks-el {
-    background-color: var(--green);
+  background-color: var(--green);
 }
 
 #parks-el-title {
-    border: solid var(--orange);
-    width: 300px;
-    margin: 0 auto;
+  border: solid var(--orange);
+  width: 300px;
+  margin: 0 auto;
 }
 
 /* #states {
