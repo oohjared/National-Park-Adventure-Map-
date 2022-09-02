@@ -56,15 +56,12 @@ function addPark (event) {
                     parksSelectList.empty();
                     console.log(data);
                     var parkTitle = data.data[0].fullName;
-                    var parkLat = data.data[0].latitude;
-                    var parkLong = data.data[0].longitude;
+                    var parkAddress = `${data.data[0].addresses[0].line1} ${data.data[0].addresses[0].city}, ${data.data[0].addresses[0].stateCode}`
                     var parkInfo = {
                         title: parkTitle,
-                        lat: parkLat,
-                        long: parkLong,
+                        address: parkAddress,
                         code: parkCode
                         };
-                    
                     localStorage.setItem(JSON.stringify(parkCode), JSON.stringify(parkInfo));
                     parkRender();
                 })
@@ -77,14 +74,18 @@ function parkRender () {
     var parkCodes = Object.keys(localStorage)
     for (i = 0; i < parkCodes.length; i++) {
         var parkSelect = JSON.parse(localStorage.getItem(parkCodes[i]));
-        parksArray.push(parkSelect.title);
+        var parkObj = {
+            title: parkSelect.title,
+            code: parkSelect.code
+        }
+        parksArray.push(parkObj);
     }
     
     
-    parksArray.forEach (function (parksArray) {
-        var parkLi = $('<li>').attr('data-index', parkSelect.code).addClass('park-select list-unstyled w-50');
+    parksArray.forEach (function (park) {
+        var parkLi = $('<li>').attr('data-index', park.code).addClass('park-select list-unstyled w-50');
         var removePark = $('<button>').attr('type', 'button').addClass('remove bg-danger m-2 text-bold');
-        parkLi.text(parksArray);
+        parkLi.text(park.title);
         removePark.text('X');
         
         parksSelectList.append(parkLi);
