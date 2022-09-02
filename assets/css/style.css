@@ -1,24 +1,30 @@
 :root {
   --font: "Chivo", sans-serif;
   --orange: rgb(209, 101, 0);
-  --green: rgb(0, 88, 0);
+  --green: #274e1c;
   --grey: rgb(192, 192, 192);
+  --darkestgrey: #151b13;
 }
 
 header {
   font-family: var(--font);
   font-weight: 400;
-  background-color: var(--orange);
-  padding: 20px;
-  color: var(--green);
+  background-color: var(--darkestgrey);
+  padding: 15px;
+  color: var(--white);
 }
 
 section{
     background-color: var(--grey);
 }
 
+footer {
+    background-color: rgb(5, 80, 5);
+    font-size: 16px;
+}
+
 .margin {
-  padding: 15px;
+  padding: 8px;
   background-color: var(--green);
 }
 
@@ -32,7 +38,7 @@ section{
   height: 35px;
   width: 250px;
   box-sizing: border-box;
-  border: 2px solid var(--orange);
+  border: 2px solid var(--darkestgrey);
   border-radius: 4px;
   background-color: #f8f8f8;
   font-size: 16px;
@@ -55,30 +61,47 @@ section{
   opacity: 0;
 }
 
+.park-div {
+    box-shadow: 5px 5px 5px rgb(0, 49, 0);
+}
+
 .park-div:hover .park-title {
     opacity: 100%;
     transition: ease-in-out 0.5s;
+    cursor: pointer;
 }
 
 .textinput:hover{
-    border-color: var(--green);
+    border-color: var(--orange);
 }
 
 .map{
-    border: 3px solid var(--orange);
+    border: 3px solid var(--darkestgrey);
     border-radius: 5px;
     background-color: var(--grey);
     height: 45px;
     width: 180px;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px rgb(51, 51, 51);
 }
 .map:hover{
-    border-color: var(--green);
+    border-color: var(--orange);
 }
 
 .selected{
-    height: 500px;
+    height: 300px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.park-select {
+    font-weight: bold;
+}
+
+.close {
+    position: absolute;
+    right: 0;
 }
 
 #parks {
