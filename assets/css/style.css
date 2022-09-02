@@ -17,6 +17,11 @@ section{
     background-color: var(--grey);
 }
 
+footer {
+    background-color: rgb(5, 80, 5);
+    font-size: 16px;
+}
+
 .margin {
   padding: 15px;
   background-color: var(--green);
@@ -55,9 +60,14 @@ section{
   opacity: 0;
 }
 
+.park-div {
+    box-shadow: 5px 5px 5px rgb(0, 49, 0);
+}
+
 .park-div:hover .park-title {
     opacity: 100%;
     transition: ease-in-out 0.5s;
+    cursor: pointer;
 }
 
 .textinput:hover{
@@ -70,15 +80,26 @@ section{
     background-color: var(--grey);
     height: 45px;
     width: 180px;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px rgb(51, 51, 51);
 }
 .map:hover{
     border-color: var(--green);
 }
 
 .selected{
-    height: 500px;
+    height: 300px;
     display: flex;
     flex-direction: column;
+}
+
+.park-select {
+    font-weight: bold;
+}
+
+.close {
+    position: absolute;
+    right: 0;
 }
 
 #parks {
