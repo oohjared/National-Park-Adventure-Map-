@@ -87,7 +87,7 @@ function parkRender () {
     }
        
     parksArray.forEach (function (park) {
-        var parkLi = $('<li>').attr('data-index', park.code).addClass('park-select list-unstyled ui-state-default rounded');
+        var parkLi = $('<li>').attr('data-index', park.code).addClass('park-select list-unstyled ui-state-default rounded m-1 p-2');
         var removePark = $('<button>').attr('type', 'button').addClass('remove bg-danger m-2 text-bold rounded');
         parkLi.text(park.title);
         removePark.text('X');
