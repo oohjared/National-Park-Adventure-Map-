@@ -62,7 +62,6 @@ function addPark (event) {
                         address: parkAddress,
                         code: parkCode
                         };
-                    console.log(parkInfo)
                     localStorage.setItem(JSON.stringify(parkCode), JSON.stringify(parkInfo));
                     parkRender();
                 })
@@ -79,7 +78,6 @@ function parkRender () {
             title: parkSelect.title,
             code: parkSelect.code
         }
-        console.log(parkObj)
         parksArray.push(parkObj);
     }
     
