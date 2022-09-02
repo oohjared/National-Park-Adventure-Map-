@@ -23,6 +23,16 @@ footer {
     font-size: 16px;
 }
 
+
+
+li:hover {
+    cursor: pointer;
+}
+
+li:active {
+    cursor: grab;
+}
+
 .margin {
   padding: 8px;
   background-color: var(--green);
