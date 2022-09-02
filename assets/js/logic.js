@@ -85,11 +85,10 @@ function parkRender () {
             parksArray.push(parkObj);
         }
     }
-    
-    
+       
     parksArray.forEach (function (park) {
-        var parkLi = $('<li>').attr('data-index', park.code).addClass('park-select list-unstyled');
-        var removePark = $('<button>').attr('type', 'button').addClass('remove bg-danger m-2 text-bold');
+        var parkLi = $('<li>').attr('data-index', park.code).addClass('park-select list-unstyled ui-state-default rounded');
+        var removePark = $('<button>').attr('type', 'button').addClass('remove bg-danger m-2 text-bold rounded');
         parkLi.text(park.title);
         removePark.text('X');
         
@@ -115,6 +114,10 @@ function mapIt (event) {
     localStorage.setItem(JSON.stringify('startPoint'), JSON.stringify(startingAdd))
     window.location.href = './index.html'
 }
+
+$( function() {
+    $(parksSelectList).sortable();
+  } );
 
 parksEl.on('click', '.park-div', addPark);
 statesEl.on('click', searchNPS);
