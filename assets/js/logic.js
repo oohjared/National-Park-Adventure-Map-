@@ -2,6 +2,7 @@ var statesEl = $('#states')
 var statesOption = $('option')
 var parksList = $('#parks')
 var parksEl = $('#parks-el')
+var parksSelected = $('.selected')
 var states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE",
 "NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
 var npsAPI = "https://developer.nps.gov/api/v1/parks?api_key=DfZ6BCJAVwqNxkRBiJWorSPvEKU307arUCacFidE&limit=467&start=0";
@@ -51,6 +52,7 @@ function addPark (event) {
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function (data) {
+                    parksSelected.empty()
                     console.log(data)
                     var parkTitle = data.data[0].fullName
                     var parkLat = data.data[0].latitude
@@ -58,33 +60,41 @@ function addPark (event) {
                     var parkInfo = {
                         title: parkTitle,
                         lat: parkLat,
-                        long: parkLong
+                        long: parkLong,
+                        code: parkCode
                         }
 
-                    if (!parksArray.includes(parkInfo)){
-                        parksArray.push(parkInfo);
-                    } 
-
-                    console.log(parksArray)
-                    console.log(parkInfo)
+                    console.log(parkInfo);
                     
-                    localStorage.setItem('parkInfo', JSON.stringify(parksArray))
-                    
-                    // parkRender();
+                    localStorage.setItem(JSON.stringify(parkCode), JSON.stringify(parkInfo))
+                    parkRender();
                 })
             }
         })
 }
 
 function parkRender () {
-    var park = JSON.parse(localStorage.getItem("parkInfo"))
-    console.log(park)
+    parksArray = []
+    var parkCodes = Object.keys(localStorage)
+    for (i = 0; i < parkCodes.length; i++) {
+        var parkSelect = JSON.parse(localStorage.getItem(parkCodes[i]))
+        parksArray.push(parkSelect.title)
+        console.log(parksArray)
+    }
     
+    
+    parksArray.forEach (function (parksArray) {
+        var parkLi = $('<li>').attr('data-index', parkSelect.code).addClass('park-select list-unstyled w-50')
+        var removePark = $('<button>').attr('type', 'button').addClass('close')
+        parkLi.text(parksArray)
+        removePark.text('X')
+        
+        parksSelected.append(parkLi)
+        parkLi.append(removePark)
+        console.log(parkLi)
+    }
+    )
 }
 
 parksEl.on('click', '.park-div', addPark)
 statesEl.on('click', searchNPS);
-
-
-// localStorage.setItem('lat', JSON.stringify(parkLat)),
-// localStorage.setItem('long', JSON.stringify(parkLong))

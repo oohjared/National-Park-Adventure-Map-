@@ -88,6 +88,15 @@ section{
     flex-direction: column;
 }
 
+.park-select {
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+}
+
 #parks {
   height: 400px;
 }
