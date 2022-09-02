@@ -51,18 +51,40 @@ function addPark (event) {
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    var parkTitle = data.fullName
-                    var parkAddr = data.addresses[0]
-                    localStorage.setItem('park', JSON.stringify(parkTitle));
-                    localStorage.setItem('address', JSON.stringify(parkAddr));
+                    console.log(data)
+                    var parkTitle = data.data[0].fullName
+                    var parkLat = data.data[0].latitude
+                    var parkLong = data.data[0].longitude
+                    var parkInfo = {
+                        title: parkTitle,
+                        lat: parkLat,
+                        long: parkLong
+                        }
+
+                    if (!parksArray.includes(parkInfo)){
+                        parksArray.push(parkInfo);
+                    } 
+
+                    console.log(parksArray)
+                    console.log(parkInfo)
+                    
+                    localStorage.setItem('parkInfo', JSON.stringify(parksArray))
+                    
+                    // parkRender();
                 })
             }
         })
 }
 
 function parkRender () {
-
+    var park = JSON.parse(localStorage.getItem("parkInfo"))
+    console.log(park)
+    
 }
 
 parksEl.on('click', '.park-div', addPark)
 statesEl.on('click', searchNPS);
+
+
+// localStorage.setItem('lat', JSON.stringify(parkLat)),
+// localStorage.setItem('long', JSON.stringify(parkLong))
