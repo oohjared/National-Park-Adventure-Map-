@@ -1,16 +1,17 @@
 :root {
   --font: "Chivo", sans-serif;
   --orange: rgb(209, 101, 0);
-  --green: rgb(0, 88, 0);
+  --green: #274e1c;
   --grey: rgb(192, 192, 192);
+  --darkestgrey: #151b13;
 }
 
 header {
   font-family: var(--font);
   font-weight: 400;
-  background-color: var(--orange);
-  padding: 20px;
-  color: var(--green);
+  background-color: var(--darkestgrey);
+  padding: 15px;
+  color: var(--white);
 }
 
 section{
@@ -23,7 +24,7 @@ footer {
 }
 
 .margin {
-  padding: 15px;
+  padding: 8px;
   background-color: var(--green);
 }
 
@@ -37,7 +38,7 @@ footer {
   height: 35px;
   width: 250px;
   box-sizing: border-box;
-  border: 2px solid var(--orange);
+  border: 2px solid var(--darkestgrey);
   border-radius: 4px;
   background-color: #f8f8f8;
   font-size: 16px;
@@ -71,11 +72,11 @@ footer {
 }
 
 .textinput:hover{
-    border-color: var(--green);
+    border-color: var(--orange);
 }
 
 .map{
-    border: 3px solid var(--orange);
+    border: 3px solid var(--darkestgrey);
     border-radius: 5px;
     background-color: var(--grey);
     height: 45px;
@@ -84,13 +85,14 @@ footer {
     box-shadow: 5px 5px 5px rgb(51, 51, 51);
 }
 .map:hover{
-    border-color: var(--green);
+    border-color: var(--orange);
 }
 
 .selected{
     height: 300px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .park-select {
