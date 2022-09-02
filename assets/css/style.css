@@ -19,7 +19,7 @@ section{
 }
 
 footer {
-    background-color: rgb(5, 80, 5);
+    background-color: var(--darkestgrey);
     font-size: 16px;
 }
 
@@ -29,7 +29,6 @@ footer {
 }
 
 .addressbar {
-  /* background-color: var(--green); */
   padding: 25px 0 20px 0;
   background-color: var(--grey);
 }
