@@ -17,6 +17,11 @@ section{
     background-color: var(--grey);
 }
 
+footer {
+    background-color: rgb(5, 80, 5);
+    font-size: 16px;
+}
+
 .margin {
   padding: 15px;
   background-color: var(--green);
@@ -83,13 +88,13 @@ section{
 }
 
 .selected{
-    height: 500px;
+    height: 300px;
     display: flex;
     flex-direction: column;
 }
 
 .park-select {
-    position: relative;
+    font-weight: bold;
 }
 
 .close {
