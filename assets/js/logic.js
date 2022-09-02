@@ -3,6 +3,8 @@ var statesOption = $('option');
 var parksList = $('#parks');
 var parksEl = $('#parks-el');
 var parksSelectEl = $('#parks-selected');
+var mapButtonEl = $('#mapButton')
+var startingInput = $('#startingInput')
 var parksSelectList = $('.selected');
 var states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE",
 "NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
@@ -73,12 +75,15 @@ function parkRender () {
     parksArray = []
     var parkCodes = Object.keys(localStorage)
     for (i = 0; i < parkCodes.length; i++) {
-        var parkSelect = JSON.parse(localStorage.getItem(parkCodes[i]));
-        var parkObj = {
-            title: parkSelect.title,
-            code: parkSelect.code
+        console.log(parkCodes[i])
+        if(parkCodes[i] != '"startPoint"'){
+            var parkSelect = JSON.parse(localStorage.getItem(parkCodes[i]));
+            var parkObj = {
+                title: parkSelect.title,
+                code: parkSelect.code
+            }
+            parksArray.push(parkObj);
         }
-        parksArray.push(parkObj);
     }
     
     
@@ -103,8 +108,17 @@ function removePark (event) {
     event.target.parentElement.remove(index);
 }
 
+function mapIt (event) {
+    event.stopPropagation();
+
+    var startingAdd = startingInput.val()
+    localStorage.setItem(JSON.stringify('startPoint'), JSON.stringify(startingAdd))
+    window.location.href = './index.html'
+}
+
 parksEl.on('click', '.park-div', addPark);
 statesEl.on('click', searchNPS);
 parksSelectEl.on('click', '.remove', removePark);
+mapButtonEl.on('click', '.map', mapIt)
 
 parkRender();
