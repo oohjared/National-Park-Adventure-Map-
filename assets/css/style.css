@@ -96,6 +96,10 @@ footer {
   margin: 0;
 }
 
+.selected-p2 {
+    height: 423px;
+}
+
 .park-select {
   border: 3px solid var(--darkestgrey);
   display: inline-block;
