@@ -115,10 +115,6 @@ function mapIt (event) {
     window.location.href = './index.html'
 }
 
-$( function() {
-    $(parksSelectList).sortable();
-  } );
-
 parksEl.on('click', '.park-div', addPark);
 statesEl.on('click', searchNPS);
 parksSelectEl.on('click', '.remove', removePark);
