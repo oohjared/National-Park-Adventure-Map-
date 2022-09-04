@@ -140,3 +140,8 @@ footer {
 #backBtn:hover {
   border-color: var(--orange);
 }
+
+#map {
+  height: 423px;
+  width: 100%;
+}

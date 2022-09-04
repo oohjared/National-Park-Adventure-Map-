@@ -176,6 +176,7 @@ function mapIt(event) {
     JSON.stringify(startingAdd)
   );
   window.location.href = "./index.html";
+  initMap()
 }
 
 function backToStart(event) {
@@ -195,11 +196,30 @@ function parksMap() {
   });
 }
 
+function initMap() {
+  var options = {
+    zoom: 4,
+    center: {lat:40.685951,lng:-101.744273}
+  }
+  var map = new google.maps.Map(document.getElementById('map'), options)
+}
+
+function directions () {
+  var directionsService = new google.maps.DirectionsService();
+  var directionsRenderer = new google.maps.DirectionsRenderer();
+  var origin = JSON.parse(localStorage.getItem('startPoint'))
+  var destination = origin
+
+  
+
+}
+
 parksEl.on("click", ".park-div", addPark);
 statesEl.on("click", searchNPS);
 parksSelectEl.on("click", ".remove", removePark);
 mapButtonEl.on("click", ".map", mapIt);
 backBtn.on("click", backToStart);
 
-// parksMap();
+
 parkRender();
+
