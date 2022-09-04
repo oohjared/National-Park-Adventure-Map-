@@ -4,6 +4,7 @@ var parksList = $('#parks');
 var parksEl = $('#parks-el');
 var parksSelectEl = $('#parks-selected');
 var mapButtonEl = $('#mapButton')
+var backBtn = $('#backBtn')
 var startingInput = $('#startingInput')
 var parksSelectList = $('.selected');
 var states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE",
@@ -115,9 +116,15 @@ function mapIt (event) {
     window.location.href = './index.html'
 }
 
+function backToStart(event) {
+    event.stopPropagation();
+    window.location.href = './page-1.html'
+}
+
 parksEl.on('click', '.park-div', addPark);
 statesEl.on('click', searchNPS);
 parksSelectEl.on('click', '.remove', removePark);
 mapButtonEl.on('click', '.map', mapIt)
+backBtn.on('click', backToStart)
 
 parkRender();
