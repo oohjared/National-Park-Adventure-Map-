@@ -184,18 +184,6 @@ function backToStart(event) {
   window.location.href = "./page-1.html";
 }
 
-function parksMap() {
-  fetch(
-    "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/json?key=AIzaSyCT42x7Cr1wlWJGyh1eiOzcPUS7XJOjD60"
-  ).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        console.log(data);
-        initMap()});
-    }
-  });
-}
-
 function initMap() {
   var options = {
     zoom: 4,
@@ -210,7 +198,7 @@ function directions () {
   var origin = JSON.parse(localStorage.getItem('startPoint'))
   var destination = origin
 
-  
+
 
 }
 
