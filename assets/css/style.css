@@ -18,6 +18,11 @@ section {
   background-color: var(--grey);
 }
 
+i {
+  color: var(--green);
+  font-size: 125%;
+}
+
 footer {
   background-color: var(--darkestgrey);
   font-size: 16px;
@@ -79,7 +84,7 @@ footer {
   border-radius: 5px;
   background-color: var(--grey);
   height: 45px;
-  width: 180px;
+  width: 200px;
   font-weight: bold;
   box-shadow: 5px 5px 5px rgb(51, 51, 51);
 }
@@ -137,3 +142,4 @@ footer {
   height: 423px;
   width: 100%;
 }
+

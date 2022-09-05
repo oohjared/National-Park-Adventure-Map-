@@ -8,6 +8,7 @@ var backBtn = $("#backBtn");
 var startingInput = $("#startingInput");
 var parksSelectList = $(".selected");
 var parksSelectPageTwo = $('.selected-p2')
+var sideBar = $('#sidebar')
 var states = [
   "AL",
   "AK",
@@ -206,7 +207,7 @@ function directions (directionsService, directionsRenderer) {
     if (parksAdd[i] != '"startPoint"') {
       var parkSelect = JSON.parse(localStorage.getItem(parksAdd[i]));
       waypts.push({
-        location: parkSelect.address,
+        location: parkSelect.title,
         stopover: true,
       })
     console.log(waypts)}
@@ -225,9 +226,6 @@ function directions (directionsService, directionsRenderer) {
     }
   })
 }
-
-
-
 
 parksEl.on("click", ".park-div", addPark);
 statesEl.on("click", searchNPS);
