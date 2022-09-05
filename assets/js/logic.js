@@ -109,7 +109,7 @@ function addPark(event) {
       response.json().then(function (data) {
         parksSelectList.empty();
         var parkTitle = data.data[0].fullName;
-        var parkAddress = `${data.data[0].addresses[0].line1} ${data.data[0].addresses[0].city}, ${data.data[0].addresses[0].stateCode}`;
+        var parkAddress = `${data.data[0].addresses[0].line1} ${data.data[0].addresses[0].line2} ${data.data[0].addresses[0].city}, ${data.data[0].addresses[0].stateCode}`;
         var parkInfo = {
           title: parkTitle,
           address: parkAddress,
@@ -136,6 +136,7 @@ function parkRender() {
         address: parkSelect.address,
         code: parkSelect.code
       };
+      console.log(parkObj)
       parksArray.push(parkObj);
     }
   }
@@ -207,7 +208,7 @@ function directions (directionsService, directionsRenderer) {
     if (parksAdd[i] != '"startPoint"') {
       var parkSelect = JSON.parse(localStorage.getItem(parksAdd[i]));
       waypts.push({
-        location: parkSelect.title,
+        location: `${parkSelect.title}, ${parkSelect.address}`,
         stopover: true,
       })
     console.log(waypts)}
