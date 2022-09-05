@@ -7,8 +7,9 @@ var mapButtonEl = $("#mapButton");
 var backBtn = $("#backBtn");
 var startingInput = $("#startingInput");
 var parksSelectList = $(".selected");
-var parksSelectPageTwo = $('.selected-p2')
-var sideBar = $('#sidebar')
+var parksSelectPageTwo = $('.selected-p2');
+var modalEl = $('#addModal');
+var closeModal = $('.close');
 var states = [
   "AL",
   "AK",
@@ -176,12 +177,21 @@ function mapIt(event) {
   event.stopPropagation();
 
   var startingAdd = startingInput.val();
-  localStorage.setItem(
-    JSON.stringify("startPoint"),
-    JSON.stringify(startingAdd)
-  );
-  window.location.href = "./index.html";
-  initMap()
+  if (startingAdd !== ""){
+    localStorage.setItem(
+      JSON.stringify("startPoint"),
+      JSON.stringify(startingAdd)
+    );
+    window.location.href = "./index.html";
+    initMap()
+  } else {
+    modalEl.css('display', "block")
+  }
+}
+
+function hideModal(event) {
+  event.stopPropagation()
+  modalEl.css('display', 'none')
 }
 
 function backToStart(event) {
@@ -233,11 +243,13 @@ function directions (directionsService, directionsRenderer) {
   })
 }
 
+// Event listeners for interactivity with app
 parksEl.on("click", ".park-div", addPark);
 statesEl.on("click", searchNPS);
 parksSelectEl.on("click", ".remove", removePark);
 mapButtonEl.on("click", ".map", mapIt);
 backBtn.on("click", backToStart);
+modalEl.on("click", ".close", hideModal)
 
 parkRender();
 

@@ -28,6 +28,7 @@ footer {
   font-size: 16px;
 }
 
+/* Classes Here */
 .margin {
   padding: 8px;
   background-color: var(--green);
@@ -110,6 +111,46 @@ footer {
   display: inline-block;
   width: fit-content;
   font-weight: bold;
+}
+
+.modal-content {
+  background-color: var(--darkestgrey);
+  font-size: 20px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--orange);
+  width: 80%;
+  color: white;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--orange);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#addModal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 #parks {
