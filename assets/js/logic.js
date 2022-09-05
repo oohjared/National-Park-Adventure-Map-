@@ -164,7 +164,12 @@ function removePark(event) {
   parksArray.splice(index, 1);
   localStorage.removeItem(JSON.stringify(index));
   event.target.parentElement.remove(index);
-  initMap();
+  console.log(window.location.pathname)
+  var pageOne = window.location.pathname
+  if (pageOne !== '/page-1.html'){
+    initMap();
+  }
+  
 }
 
 function mapIt(event) {
