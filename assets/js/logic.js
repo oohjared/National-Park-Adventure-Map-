@@ -107,7 +107,6 @@ function addPark(event) {
     if (response.ok) {
       response.json().then(function (data) {
         parksSelectList.empty();
-        console.log(data);
         var parkTitle = data.data[0].fullName;
         var parkAddress = `${data.data[0].addresses[0].line1} ${data.data[0].addresses[0].city}, ${data.data[0].addresses[0].stateCode}`;
         var parkInfo = {
@@ -129,7 +128,6 @@ function parkRender() {
   parksArray = [];
   var parkCodes = Object.keys(localStorage);
   for (i = 0; i < parkCodes.length; i++) {
-    console.log(parkCodes[i]);
     if (parkCodes[i] != '"startPoint"') {
       var parkSelect = JSON.parse(localStorage.getItem(parkCodes[i]));
       var parkObj = {
@@ -137,7 +135,6 @@ function parkRender() {
         address: parkSelect.address,
         code: parkSelect.code
       };
-      console.log(parkObj)
       parksArray.push(parkObj);
     }
   }
@@ -165,6 +162,7 @@ function removePark(event) {
   parksArray.splice(index, 1);
   localStorage.removeItem(JSON.stringify(index));
   event.target.parentElement.remove(index);
+  initMap();
 }
 
 function mapIt(event) {
@@ -185,29 +183,57 @@ function backToStart(event) {
 }
 
 function initMap() {
+  var directionsService = new google.maps.DirectionsService();
+  var directionsRenderer = new google.maps.DirectionsRenderer();
   var options = {
     zoom: 4,
     center: {lat:40.685951,lng:-101.744273}
   }
   var map = new google.maps.Map(document.getElementById('map'), options)
+  directionsRenderer.setMap(map);
+  directions(directionsService, directionsRenderer)
 }
 
-function directions () {
-  var directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer();
-  var origin = JSON.parse(localStorage.getItem('startPoint'))
+function directions (directionsService, directionsRenderer) {
+  var origin = localStorage.getItem('"startPoint"')
   var destination = origin
-
-
-
+  var waypts = []
+  var parksAdd = Object.keys(localStorage);
+  console.log('made it')
+  console.log(origin)
+  for (i = 0; i < parksAdd.length; i++) {
+    console.log(parksAdd[i]);
+    if (parksAdd[i] != '"startPoint"') {
+      var parkSelect = JSON.parse(localStorage.getItem(parksAdd[i]));
+      waypts.push({
+        location: parkSelect.address,
+        stopover: true,
+      })
+    console.log(waypts)}
+  }
+  
+  var request = {
+    origin: origin,
+    destination: destination,
+    waypoints: waypts,
+    optimizeWaypoints: true,
+    travelMode: 'DRIVING'
+  };
+  directionsService.route(request, function (result, status) {
+    if (status === 'OK') {
+      directionsRenderer.setDirections(result);
+    }
+  })
 }
+
+
+
 
 parksEl.on("click", ".park-div", addPark);
 statesEl.on("click", searchNPS);
 parksSelectEl.on("click", ".remove", removePark);
 mapButtonEl.on("click", ".map", mapIt);
 backBtn.on("click", backToStart);
-
 
 parkRender();
 

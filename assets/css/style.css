@@ -107,14 +107,6 @@ footer {
   font-weight: bold;
 }
 
-.park-select:hover {
-  cursor: pointer;
-}
-
-.park-select:active {
-  cursor: grab;
-}
-
 #parks {
   height: 400px;
 }
