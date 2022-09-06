@@ -18,27 +18,17 @@ section {
   background-color: var(--grey);
 }
 
+i {
+  color: var(--green);
+  font-size: 125%;
+}
+
 footer {
   background-color: var(--darkestgrey);
   font-size: 16px;
 }
 
-li {
-  border: 3px solid var(--darkestgrey);
-  display: inline-block;
-  width: fit-content;
-}
-
-
-
-li:hover {
-    cursor: pointer;
-}
-
-li:active {
-    cursor: grab;
-}
-
+/* Classes Here */
 .margin {
   padding: 8px;
   background-color: var(--green);
@@ -95,10 +85,11 @@ li:active {
   border-radius: 5px;
   background-color: var(--grey);
   height: 45px;
-  width: 180px;
+  width: 200px;
   font-weight: bold;
   box-shadow: 5px 5px 5px rgb(51, 51, 51);
 }
+
 .map:hover {
   border-color: var(--orange);
 }
@@ -111,13 +102,55 @@ li:active {
   margin: 0;
 }
 
+.selected-p2 {
+    height: 423px;
+}
+
 .park-select {
+  border: 3px solid var(--darkestgrey);
+  display: inline-block;
+  width: fit-content;
   font-weight: bold;
+}
+
+.modal-content {
+  background-color: var(--darkestgrey);
+  font-size: 20px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--orange);
+  width: 80%;
+  color: white;
 }
 
 .close {
   position: absolute;
   right: 0;
+  top: 0;
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--orange);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#addModal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 #parks {
@@ -133,3 +166,21 @@ li:active {
   width: 300px;
   margin: 0 auto;
 }
+
+#backBtn {
+  border: 3px solid var(--darkestgrey);
+  border-radius: 5px;
+  background-color: var(--grey);
+  font-weight: bold;
+  box-shadow: 5px 5px 5px rgb(51, 51, 51);
+}
+
+#backBtn:hover {
+  border-color: var(--orange);
+}
+
+#map {
+  height: 423px;
+  width: 100%;
+}
+
