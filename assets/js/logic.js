@@ -8,9 +8,9 @@ var mapButtonEl = $("#mapButton");
 var backBtn = $("#backBtn");
 var startingInput = $("#startingInput");
 var parksSelectList = $(".selected");
-var parksSelectPageTwo = $('.selected-p2');
-var modalEl = $('#addModal');
-var closeModal = $('.close');
+var parksSelectPageTwo = $(".selected-p2");
+var modalEl = $("#addModal");
+var closeModal = $(".close");
 var states = [
   "AL",
   "AK",
@@ -141,9 +141,9 @@ function parkRender() {
       var parkObj = {
         title: parkSelect.title,
         address: parkSelect.address,
-        code: parkSelect.code
+        code: parkSelect.code,
       };
-      console.log(parkObj)
+      console.log(parkObj);
       parksArray.push(parkObj);
     }
   }
@@ -159,7 +159,7 @@ function parkRender() {
     removePark.text("X");
 
     parksSelectList.append(parkLi);
-    parksSelectPageTwo.append(parkLi)
+    parksSelectPageTwo.append(parkLi);
     parkLi.append(removePark);
   });
 }
@@ -172,12 +172,11 @@ function removePark(event) {
   parksArray.splice(index, 1);
   localStorage.removeItem(JSON.stringify(index));
   event.target.parentElement.remove(index);
-  console.log(window.location.pathname)
-  var pageOne = window.location.pathname
-  if (pageOne !== '/page-1.html'){
+  console.log(window.location.pathname);
+  var pageOne = window.location.pathname;
+  if (pageOne !== "/index.html") {
     initMap();
   }
-  
 }
 
 // Load second page with directions or populate modal if no starting address selected
@@ -185,28 +184,28 @@ function mapIt(event) {
   event.stopPropagation();
 
   var startingAdd = startingInput.val();
-  if (startingAdd !== ""){
+  if (startingAdd !== "") {
     localStorage.setItem(
       JSON.stringify("startPoint"),
       JSON.stringify(startingAdd)
     );
-    window.location.href = "./index.html";
-    initMap()
+    window.location.href = "./second-page.html";
+    initMap();
   } else {
-    modalEl.css('display', "block")
+    modalEl.css("display", "block");
   }
 }
 
 // Hide modal when 'X' is clicked
 function hideModal(event) {
-  event.stopPropagation()
-  modalEl.css('display', 'none')
+  event.stopPropagation();
+  modalEl.css("display", "none");
 }
 
 // Navigate back to main/initial page
 function backToStart(event) {
   event.stopPropagation();
-  window.location.href = "./page-1.html";
+  window.location.href = "./index.html";
 }
 
 // Function to render map
@@ -215,21 +214,21 @@ function initMap() {
   var directionsRenderer = new google.maps.DirectionsRenderer();
   var options = {
     zoom: 4,
-    center: {lat:40.685951,lng:-101.744273}
-  }
-  var map = new google.maps.Map(document.getElementById('map'), options)
+    center: { lat: 40.685951, lng: -101.744273 },
+  };
+  var map = new google.maps.Map(document.getElementById("map"), options);
   directionsRenderer.setMap(map);
-  directions(directionsService, directionsRenderer)
+  directions(directionsService, directionsRenderer);
 }
 
 // Function to render directions on map
-function directions (directionsService, directionsRenderer) {
-  var origin = localStorage.getItem('"startPoint"')
-  var destination = origin
-  var waypts = []
+function directions(directionsService, directionsRenderer) {
+  var origin = localStorage.getItem('"startPoint"');
+  var destination = origin;
+  var waypts = [];
   var parksAdd = Object.keys(localStorage);
-  console.log('made it')
-  console.log(origin)
+  console.log("made it");
+  console.log(origin);
   for (i = 0; i < parksAdd.length; i++) {
     console.log(parksAdd[i]);
     if (parksAdd[i] != '"startPoint"') {
@@ -237,22 +236,23 @@ function directions (directionsService, directionsRenderer) {
       waypts.push({
         location: `${parkSelect.title}, ${parkSelect.address}`,
         stopover: true,
-      })
-    console.log(waypts)}
+      });
+      console.log(waypts);
+    }
   }
-  
+
   var request = {
     origin: origin,
     destination: destination,
     waypoints: waypts,
     optimizeWaypoints: true,
-    travelMode: 'DRIVING'
+    travelMode: "DRIVING",
   };
   directionsService.route(request, function (result, status) {
-    if (status === 'OK') {
+    if (status === "OK") {
       directionsRenderer.setDirections(result);
     }
-  })
+  });
 }
 
 // Event listeners for interactivity with app
@@ -261,8 +261,7 @@ statesEl.on("click", searchNPS);
 parksSelectEl.on("click", ".remove", removePark);
 mapButtonEl.on("click", ".map", mapIt);
 backBtn.on("click", backToStart);
-modalEl.on("click", ".close", hideModal)
+modalEl.on("click", ".close", hideModal);
 
 // Render parks list on page load
 parkRender();
-
