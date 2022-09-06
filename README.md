@@ -17,3 +17,4 @@ https://github.com/oohjared/National-Park-Adventure-Map-
 ## Preview
 
 ![National Park Adventure Planner Prevew](./assets/images/national-park-adventure-planner-preview.gif)
+
