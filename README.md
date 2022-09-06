@@ -8,7 +8,7 @@ Ultimately, users are able to create adventures to national parks, either for a 
 
 ## Live Link
 
-
+https://oohjared.github.io/National-Park-Adventure-Map-/
 
 ## Github
 
@@ -16,4 +16,4 @@ https://github.com/oohjared/National-Park-Adventure-Map-
 
 ## Preview
 
-![National Park Adventure Planner Prevew]()
+![National Park Adventure Planner Prevew](./assets/images/national-park-adventure-planner-preview.gif)
