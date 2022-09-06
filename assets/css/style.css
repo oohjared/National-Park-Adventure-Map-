@@ -1,3 +1,4 @@
+/* Roots */
 :root {
   --font: "Chivo", sans-serif;
   --orange: rgb(209, 101, 0);
@@ -6,6 +7,7 @@
   --darkestgrey: #151b13;
 }
 
+/* Elements */
 header {
   font-family: var(--font);
   font-weight: 400;
@@ -139,6 +141,7 @@ footer {
   cursor: pointer;
 }
 
+/* IDs */
 #addModal {
   display: none; 
   position: fixed;

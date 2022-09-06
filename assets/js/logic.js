@@ -1,3 +1,4 @@
+// Variables
 var statesEl = $("#states");
 var statesOption = $("option");
 var parksList = $("#parks");
@@ -66,6 +67,7 @@ var npsAPI =
   "https://developer.nps.gov/api/v1/parks?api_key=DfZ6BCJAVwqNxkRBiJWorSPvEKU307arUCacFidE&limit=467&start=0";
 var parksArray = [];
 
+// Fill state code dropdown list
 for (var i = 0; i < states.length; i++) {
   var optionEl = $("<option>");
   optionEl.text(states[i]);
@@ -73,6 +75,7 @@ for (var i = 0; i < states.length; i++) {
   statesEl.append(optionEl);
 }
 
+// Pull parks from NPS API
 function searchNPS() {
   fetch(npsAPI + "&stateCode=" + statesEl.val()).then(function (response) {
     if (response.ok) {
@@ -86,6 +89,7 @@ function searchNPS() {
   });
 }
 
+// Diplay parks that match the state code
 function displayCard(park) {
   var parkLi = $("<li>").addClass("list-inline-item p-1");
   var parkImgDiv = $("<div>").addClass("position-relative park-div rounded");
@@ -101,6 +105,7 @@ function displayCard(park) {
   parkImgDiv.append(parkImg, parkTitle);
 }
 
+// Add park to store parks to visit information in local storage
 function addPark(event) {
   event.stopPropagation();
   var parkCode = event.target.dataset.code;
@@ -126,6 +131,7 @@ function addPark(event) {
   });
 }
 
+// Render parks on parks selected list
 function parkRender() {
   parksArray = [];
   var parkCodes = Object.keys(localStorage);
@@ -158,6 +164,7 @@ function parkRender() {
   });
 }
 
+// Function to remove parks from list
 function removePark(event) {
   event.stopPropagation();
   console.log("yup, you clicked it");
@@ -173,6 +180,7 @@ function removePark(event) {
   
 }
 
+// Load second page with directions or populate modal if no starting address selected
 function mapIt(event) {
   event.stopPropagation();
 
@@ -189,16 +197,19 @@ function mapIt(event) {
   }
 }
 
+// Hide modal when 'X' is clicked
 function hideModal(event) {
   event.stopPropagation()
   modalEl.css('display', 'none')
 }
 
+// Navigate back to main/initial page
 function backToStart(event) {
   event.stopPropagation();
   window.location.href = "./page-1.html";
 }
 
+// Function to render map
 function initMap() {
   var directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -211,6 +222,7 @@ function initMap() {
   directions(directionsService, directionsRenderer)
 }
 
+// Function to render directions on map
 function directions (directionsService, directionsRenderer) {
   var origin = localStorage.getItem('"startPoint"')
   var destination = origin
@@ -251,5 +263,6 @@ mapButtonEl.on("click", ".map", mapIt);
 backBtn.on("click", backToStart);
 modalEl.on("click", ".close", hideModal)
 
+// Render parks list on page load
 parkRender();
 
